@@ -1,4 +1,3 @@
-import React from 'react';
 import { DecisionResult } from '../types/index.js';
 import DecisionCard from '../components/DecisionCard.js';
 import Timeline from '../components/Timeline.js';
@@ -19,7 +18,7 @@ export default function ResultsPage({ result, onBack }: ResultsPageProps) {
           onClick={onBack}
           className="mb-8 px-4 py-2 text-slate-400 hover:text-white transition"
         >
-          ← Back to Search
+          Back to Search
         </button>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -36,7 +35,8 @@ export default function ResultsPage({ result, onBack }: ResultsPageProps) {
         </div>
 
         <div className="mt-8 text-center text-sm text-slate-500">
-          Processing time: {result.metadata.processingTimeMs}ms | Confidence: {Math.round(result.decision.confidence * 100)}%
+          Processing time: {result.metadata.processingTimeMs}ms | Confidence:{' '}
+          {Math.round(result.decision.confidence * 100)}%
         </div>
       </div>
     </div>

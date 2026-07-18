@@ -10,12 +10,29 @@ export class MockMCPAdapter implements IMCPAdapter {
   }
 
   async search(query: string): Promise<Evidence[]> {
-    Logger.debug(Searching  for: );
+    Logger.debug(`Searching ${this.name} for: ${query}`);
     await new Promise((resolve) => setTimeout(resolve, 300));
-    return mockEvidenceData.filter((ev) =>
-      ev.excerpt.toLowerCase().includes(query.toLowerCase()) ||
-      ev.title.toLowerCase().includes(query.toLowerCase())
-    );
+
+    const tokens = query
+      .toLowerCase()
+      .split(/\W+/)
+      .filter((token) => token.length > 2);
+
+    if (tokens.length === 0) {
+      return mockEvidenceData;
+    }
+
+    const scoredEvidence = mockEvidenceData
+      .map((ev) => {
+        const haystack = `${ev.title} ${ev.excerpt} ${ev.source} ${ev.author || ''}`.toLowerCase();
+        const score = tokens.filter((token) => haystack.includes(token)).length;
+        return { ev, score };
+      })
+      .filter(({ score }) => score > 0)
+      .sort((a, b) => b.score - a.score || (b.ev.confidence || 0) - (a.ev.confidence || 0))
+      .map(({ ev }) => ev);
+
+    return scoredEvidence.length > 0 ? scoredEvidence : mockEvidenceData;
   }
 
   getName(): string {

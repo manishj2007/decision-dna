@@ -1,4 +1,3 @@
-import React from 'react';
 import LandingPage from './pages/LandingPage.js';
 import './styles/globals.css';
 

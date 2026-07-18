@@ -1,4 +1,3 @@
-import React from 'react';
 import { Decision } from '../types/index.js';
 
 interface DecisionCardProps {
@@ -15,22 +14,22 @@ export default function DecisionCard({ decision }: DecisionCardProps) {
 
   return (
     <div className="p-6 bg-slate-800 border border-slate-700 rounded-lg">
-      <div className="flex items-start justify-between mb-4">
+      <div className="flex items-start justify-between gap-4 mb-4">
         <h2 className="text-2xl font-bold text-white flex-1">{decision.summary}</h2>
-        <span className={px-3 py-1 rounded text-sm font-semibold border }>
+        <span className={`px-3 py-1 rounded text-sm font-semibold border ${statusColors[decision.status]}`}>
           {decision.status.charAt(0).toUpperCase() + decision.status.slice(1)}
         </span>
       </div>
 
       <p className="text-slate-300 mb-6">{decision.reason}</p>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <p className="text-sm text-slate-400 mb-1">Confidence</p>
           <div className="w-full bg-slate-700 rounded-full h-2">
             <div
               className="bg-gradient-to-r from-blue-500 to-cyan-500 h-2 rounded-full"
-              style={{ width: ${decision.confidence * 100}% }}
+              style={{ width: `${Math.round(decision.confidence * 100)}%` }}
             />
           </div>
           <p className="text-sm text-slate-300 mt-1">{Math.round(decision.confidence * 100)}%</p>

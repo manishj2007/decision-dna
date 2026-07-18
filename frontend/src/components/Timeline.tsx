@@ -1,4 +1,3 @@
-import React from 'react';
 import { TimelineEvent } from '../types/index.js';
 
 interface TimelineProps {
@@ -18,9 +17,9 @@ export default function Timeline({ events }: TimelineProps) {
       <h3 className="text-xl font-bold text-white mb-6">Timeline</h3>
       <div className="space-y-4">
         {events.map((event, index) => (
-          <div key={index} className="flex gap-4">
+          <div key={`${event.date}-${event.title}-${index}`} className="flex gap-4">
             <div className="flex flex-col items-center">
-              <div className={w-3 h-3 rounded-full } />
+              <div className={`w-3 h-3 rounded-full ${typeColors[event.type]}`} />
               {index < events.length - 1 && <div className="w-0.5 h-12 bg-slate-700 mt-2" />}
             </div>
             <div className="flex-1 pb-4">

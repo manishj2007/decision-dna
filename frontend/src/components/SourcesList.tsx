@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface Source {
   id: string;
   title: string;

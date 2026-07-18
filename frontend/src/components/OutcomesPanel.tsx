@@ -1,4 +1,3 @@
-import React from 'react';
 import { Outcome } from '../types/index.js';
 
 interface OutcomesPanelProps {
@@ -7,10 +6,10 @@ interface OutcomesPanelProps {
 
 export default function OutcomesPanel({ outcomes }: OutcomesPanelProps) {
   const statusIcons = {
-    positive: '✅',
-    negative: '❌',
-    neutral: '⚪',
-    unknown: '❓',
+    positive: '+',
+    negative: '-',
+    neutral: '=',
+    unknown: '?',
   };
 
   const impactColors = {
@@ -26,10 +25,10 @@ export default function OutcomesPanel({ outcomes }: OutcomesPanelProps) {
         {outcomes.map((outcome) => (
           <div key={outcome.id} className="p-4 bg-slate-700/50 rounded border border-slate-600">
             <div className="flex items-start gap-3">
-              <span className="text-2xl">{statusIcons[outcome.status]}</span>
+              <span className="text-2xl font-bold text-slate-200">{statusIcons[outcome.status]}</span>
               <div className="flex-1">
                 <p className="text-white font-semibold">{outcome.description}</p>
-                <p className={	ext-sm mt-2 }>
+                <p className={`text-sm mt-2 ${impactColors[outcome.impact]}`}>
                   Impact: {outcome.impact.charAt(0).toUpperCase() + outcome.impact.slice(1)}
                 </p>
               </div>
