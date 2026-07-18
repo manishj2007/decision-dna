@@ -1,0 +1,86 @@
+import { Evidence, Participant } from '../types/index.js';
+
+export const mockEvidenceData: Evidence[] = [
+  {
+    id: 'ev-1',
+    title: 'Feature X Cancellation Discussion',
+    type: 'slack',
+    source: 'Slack #engineering',
+    url: 'https://slack.com/archives/C123/p1234567890',
+    excerpt: 'We decided to cancel Feature X due to shifting priorities and resource constraints. The team consensus was to focus on core infrastructure instead.',
+    timestamp: '2024-01-15T10:30:00Z',
+    author: 'Sarah Chen',
+    confidence: 0.95,
+  },
+  {
+    id: 'ev-2',
+    title: 'Commit: Remove Feature X code',
+    type: 'github',
+    source: 'GitHub repository',
+    url: 'https://github.com/acme/repo/commit/abc123',
+    excerpt: 'Removed Feature X implementation and related tests. This feature was cancelled in favor of prioritizing database migration work.',
+    timestamp: '2024-01-16T14:20:00Z',
+    author: 'Mike Johnson',
+    confidence: 0.92,
+  },
+  {
+    id: 'ev-3',
+    title: 'Decision Document: Feature X Cancellation',
+    type: 'notion',
+    source: 'Notion Engineering Decisions',
+    url: 'https://notion.so/Feature-X-Cancellation-abc123',
+    excerpt: 'After review, Feature X was cancelled. Key reasons: (1) Misalignment with Q1 roadmap, (2) Resource constraints, (3) Customer feedback indicated lower priority.',
+    timestamp: '2024-01-14T09:00:00Z',
+    author: 'Product Team',
+    confidence: 0.88,
+  },
+  {
+    id: 'ev-4',
+    title: 'Email: Stakeholder Update',
+    type: 'email',
+    source: 'Email Archive',
+    url: 'mailto:team@acme.com',
+    excerpt: 'All stakeholders have been notified about the Feature X cancellation. We will redirect efforts to the database migration project which is critical for scaling.',
+    timestamp: '2024-01-16T16:45:00Z',
+    author: 'Executive Team',
+    confidence: 0.85,
+  },
+  {
+    id: 'ev-5',
+    title: 'Database Migration - Performance Gains',
+    type: 'github',
+    source: 'GitHub Issues',
+    url: 'https://github.com/acme/repo/issues/5678',
+    excerpt: 'Database migration completed. Achieved 40% improvement in query performance. This was prioritized over Feature X development.',
+    timestamp: '2024-02-20T11:15:00Z',
+    author: 'Database Team',
+    confidence: 0.90,
+  },
+];
+
+export const mockParticipants: Participant[] = [
+  {
+    name: 'Sarah Chen',
+    email: 'sarah.chen@acme.com',
+    role: 'Engineering Lead',
+    mentions: 12,
+  },
+  {
+    name: 'Mike Johnson',
+    email: 'mike.johnson@acme.com',
+    role: 'Senior Developer',
+    mentions: 8,
+  },
+  {
+    name: 'Product Team',
+    email: 'product@acme.com',
+    role: 'Product Management',
+    mentions: 5,
+  },
+  {
+    name: 'Executive Team',
+    email: 'exec@acme.com',
+    role: 'Leadership',
+    mentions: 3,
+  },
+];
