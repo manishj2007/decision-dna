@@ -1,13 +1,16 @@
 {
   "name": "decision-dna",
   "private": true,
+  "version": "1.0.0",
   "workspaces": [
     "backend",
     "frontend"
   ],
   "scripts": {
-    "install:all": "npm install --workspaces",
     "build": "npm run build --workspace=backend && npm run build --workspace=frontend",
     "start": "npm run start --workspace=backend"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0"
   }
 }
